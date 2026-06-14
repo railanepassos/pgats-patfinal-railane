@@ -33,3 +33,5 @@ const servicoDePagamento = new ServicoDePagamento();
 // servicoDePagamento.realizaPagamento('0987-7656-3475', 'Samar', 100.01);
 
 servicoDePagamento.consultarUltimoPagamento();
+
+module.exports = ServicoDePagamento;
