@@ -2,6 +2,10 @@ class ServicoDePagamento {
     pagamentos = [];
 
     realizaPagamento(codigoBarras, empresa, valor) {
+        if (typeof codigoBarras !== 'string' || typeof empresa !== 'string' || typeof valor !== 'number') {
+            console.error('Dados inválidos para realizar o pagamento.');
+            return;
+        }
         const pagamento = {
             codigoBarras,
             empresa,
@@ -14,9 +18,7 @@ class ServicoDePagamento {
     }
 
     consultarUltimoPagamento() {
-        if (this.pagamentos.length === 0) {
-            return null;
-        }
+        if (this.pagamentos.length === 0) return null;
 
         const ultimoPagamento = this.pagamentos[this.pagamentos.length - 1];
         console.log('Último pagamento realizado:');
