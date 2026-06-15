@@ -3,9 +3,13 @@ class ServicoDePagamento {
 
     realizaPagamento(codigoBarras, empresa, valor) {
         if (typeof codigoBarras !== 'string' || typeof empresa !== 'string' || typeof valor !== 'number') {
-            console.error('Dados inválidos para realizar o pagamento.');
-            return;
+            throw new Error('Dados inválidos para realizar o pagamento.');
         }
+
+        if (valor < 0) {
+            throw new Error('Valor do pagamento não pode ser negativo. O valor deve ser positivo.');
+        }
+
         const pagamento = {
             codigoBarras,
             empresa,
